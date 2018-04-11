@@ -1,0 +1,31 @@
+#server Setting
+server:
+  port: 8081
+  servlet:
+    context-path: /api
+
+#mybatis Setting
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: cn.rui0.model
+
+#spring Setting
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springbootdb?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: ruilin
+    platform: mysql
+    type: com.alibaba.druid.pool.DruidDataSource
+
+  redis:
+      database: 0
+      host: localhost
+      port: 6379
+
+#logging Setting
+logging:
+  level:
+    cn.rui0.springboot.mapper: DEBUG
+
