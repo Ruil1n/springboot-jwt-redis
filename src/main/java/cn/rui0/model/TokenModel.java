@@ -1,8 +1,11 @@
 package cn.rui0.model;
 
+import org.springframework.stereotype.Component;
+
 /**
  * Created by Ruilin on 2018/4/10.
  */
+@Component
 public class TokenModel {
     //用户id
     private long userId;
@@ -11,12 +14,17 @@ public class TokenModel {
 
     private String token;
 
-    public TokenModel(long userId, String userName,String token) {
+//    public TokenModel(long userId, String userName,String token) {
+//        this.userId = userId;
+//        this.userName=userName;
+//        this.token = token;
+//    }
+
+    public void setTokenModel(long userId, String userName,String token){
         this.userId = userId;
         this.userName=userName;
         this.token = token;
     }
-
 
     public long getUserId() {
         return userId;

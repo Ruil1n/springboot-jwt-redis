@@ -35,12 +35,16 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class JwtUtil {
     final String base64EncodedSecreKey = "cnVpbGlu";//私钥
-    final long TOKEN_EXP = 5 * 60 * 1000;//测试过期时间5分钟
     final long TOKEN_EXPIRES_HOUR = 1;
+
+    @Autowired
+    private TokenModel tokenModel;
 
     @Qualifier("redisTemplate")
     @Autowired
     private RedisTemplate redis;
+
+
 
     @Bean
     public RedisTemplate redisTemplateInit() {
@@ -68,7 +72,7 @@ public class JwtUtil {
                 // 签名设置
                 .signWith(SignatureAlgorithm.HS256, base64EncodedSecreKey)
                 .compact();
-        TokenModel tokenModel = new TokenModel(userId, userName, token);
+        tokenModel.setTokenModel(userId, userName, token);
         redis.boundValueOps(String.valueOf(userId)).set(token, TOKEN_EXPIRES_HOUR, TimeUnit.HOURS);
         return tokenModel;
     }
@@ -86,7 +90,7 @@ public class JwtUtil {
         if (userToken == null)
             return false;
         int userId = getUserId(userToken);
-        String token = (String) redis.boundValueOps(userId).get();
+        String token = (String) redis.boundValueOps(String.valueOf(userId)).get();
         if (!token.equals(userToken))
             return false;
         redis.boundValueOps(String.valueOf(userId)).expire(TOKEN_EXPIRES_HOUR, TimeUnit.HOURS);
