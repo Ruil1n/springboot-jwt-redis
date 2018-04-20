@@ -26,6 +26,7 @@ public class UserController {
     @Autowired
     private UserinfoService userinfoService;
 
+    @IgnoreSecurity
     @PostMapping("/login")
     public TokenModel login(User user) throws ServletException {
         String name = user.getUsername();

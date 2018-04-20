@@ -91,7 +91,7 @@ public class JwtUtil {
             return false;
         int userId = getUserId(userToken);
         String token = (String) redis.boundValueOps(String.valueOf(userId)).get();
-        if (!token.equals(userToken))
+        if (!userToken.equals(token))
             return false;
         redis.boundValueOps(String.valueOf(userId)).expire(TOKEN_EXPIRES_HOUR, TimeUnit.HOURS);
         return true;

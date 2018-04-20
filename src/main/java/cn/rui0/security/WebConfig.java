@@ -41,7 +41,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 //        System.out.println("aaaa");
 //        registry.addInterceptor(new JwtAuthInterceptor()).addPathPatterns("/api/**");
 //        registry.addInterceptor(new JwtAuthInterceptor()).addPathPatterns("/main/**");
-        registry.addInterceptor(getSecurityInterceptor()).excludePathPatterns("/user/login");
+        registry.addInterceptor(getSecurityInterceptor()).addPathPatterns("/**");
+//        registry.addInterceptor(getSecurityInterceptor()).excludePathPatterns("/user/login");
     }
 
     @Override

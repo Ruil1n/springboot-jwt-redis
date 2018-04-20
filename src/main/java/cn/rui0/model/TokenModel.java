@@ -14,12 +14,6 @@ public class TokenModel {
 
     private String token;
 
-//    public TokenModel(long userId, String userName,String token) {
-//        this.userId = userId;
-//        this.userName=userName;
-//        this.token = token;
-//    }
-
     public void setTokenModel(long userId, String userName,String token){
         this.userId = userId;
         this.userName=userName;

@@ -68,7 +68,6 @@ public class JwtAuthInterceptor extends HandlerInterceptorAdapter {
         try {
             if (jwtUtil.checkToken(token)) {
                 //返回用户对象
-                //mapper去查
                 Userinfo userinfo=userinfoService.findByUserId(jwtUtil.getUserId(token));
                 request.setAttribute("currentUser", userinfo);
                 return true;
