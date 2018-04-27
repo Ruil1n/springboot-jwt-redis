@@ -4,10 +4,7 @@ import cn.rui0.model.Userinfo;
 import cn.rui0.security.annotation.CurrentUser;
 import cn.rui0.service.UserinfoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by Ruilin on 2018/4/19.

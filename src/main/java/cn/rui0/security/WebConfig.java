@@ -8,6 +8,7 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.*;
 
 import java.util.List;
+
 //需要注意，拦截器中引用了 UserService 所以在注册时需要使用 @Bean 的形式以告诉 Spring 注入
 @Configuration
 @EnableWebMvc
@@ -25,7 +26,12 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         //允许全部请求跨域
-        registry.addMapping("/**");
+//        registry.addMapping("/**")
+//                .allowedOrigins("*")
+//                .allowedMethods("PUT", "DELETE","GET","POST")
+//                .allowedHeaders("*")
+//                .allowCredentials(false).maxAge(3600);
+        registry.addMapping("/**").allowedOrigins("*");
     }
 
     @Override

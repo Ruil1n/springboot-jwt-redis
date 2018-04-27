@@ -28,7 +28,7 @@ public class UserController {
 
     @IgnoreSecurity
     @PostMapping("/login")
-    public TokenModel login(User user) throws ServletException {
+    public TokenModel login(Userinfo user) throws ServletException {
         String name = user.getUsername();
         String pass = user.getPassword();
         userinfo=userinfoService.login(name,pass);
@@ -43,7 +43,6 @@ public class UserController {
 //            throw new ServletException("wrong password");
 //        }
 //        return jwtUtil.creatToken(name,1234);
-
     }
 
     @IgnoreSecurity
