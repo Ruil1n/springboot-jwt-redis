@@ -1,6 +1,7 @@
 package cn.rui0.security;
 
 import cn.rui0.model.TokenModel;
+import cn.rui0.util.ReturnJson;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.junit.Test;
@@ -13,6 +14,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 

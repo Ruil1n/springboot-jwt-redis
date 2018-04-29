@@ -3,6 +3,8 @@ package cn.rui0.security;
 import cn.rui0.model.Userinfo;
 import cn.rui0.security.annotation.IgnoreSecurity;
 import cn.rui0.service.UserinfoService;
+import cn.rui0.util.ResponseData;
+import cn.rui0.util.ReturnJson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
@@ -70,7 +72,9 @@ public class JwtAuthInterceptor extends HandlerInterceptorAdapter {
 
         String authHeader = request.getHeader("Authorization");
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            throw new ServletException("invalid Authorization header");
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+//            throw new ServletException("invalid Authorization header");
+//            ReturnJson.jsonReturn(response, ResponseData.unauthorized(),"invalid Authorization header",0);
         }
 
 
@@ -85,7 +89,6 @@ public class JwtAuthInterceptor extends HandlerInterceptorAdapter {
             }else {
                 //如果验证token失败，并且方法需要用户，返回401错误
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-//                throw new ServletException("token error");
                 return false;
             }
         } catch (Exception e) {
